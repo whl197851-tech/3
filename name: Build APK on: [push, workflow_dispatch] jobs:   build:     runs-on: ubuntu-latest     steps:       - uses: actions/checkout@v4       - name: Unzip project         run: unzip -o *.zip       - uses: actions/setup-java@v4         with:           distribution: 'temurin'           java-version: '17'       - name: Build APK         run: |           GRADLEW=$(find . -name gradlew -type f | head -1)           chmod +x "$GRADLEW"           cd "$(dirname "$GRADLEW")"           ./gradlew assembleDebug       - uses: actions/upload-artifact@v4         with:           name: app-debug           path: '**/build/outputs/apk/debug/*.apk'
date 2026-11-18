@@ -1,0 +1,41 @@
+姓名: 构建安装包
+
+在……之上:
+推：
+分支机构: [主要的,掌握]
+工作流程分派(_D)：
+
+招聘:
+建立:
+run-on:Ubuntu-最新
+权限:
+内容: 写
+步骤:
+      - 姓名: 结账
+uses：操作/结帐@v4
+
+      - 姓名:       
+没有zip项目姓名
+如果ls*.zip>/dev/null2>&1；，则解压缩-o*.zip；fi
+
+      - 姓名: 安装JDK
+用途：操作/设置-Java@v4
+和……一起:
+分布: '没有人
+java版: '17'
+
+      姓名 构建安装包: 构建安装包
+跑: |
+gradlew=$(find. -name gradlew-type f|head-1)
+chmod+x"$gradlew"
+CD"$(目录名"$gradlew")"
+./gradlew装配调试
+
+      - 姓名: 发布安装包以发布
+uses: softprops/action-gh-release@v2
+和……一起:
+tag_name: apk-v${{github.run_number}}
+姓名: 安装包v${{github.run_number}}
+文件: '**/build/outputs/apk/debug/*.apk'
+env:
+GitHub_TOKEN: ${{secrets.GITHUB_TOKEN}}
